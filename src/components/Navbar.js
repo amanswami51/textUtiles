@@ -18,17 +18,6 @@ export default function Navbar(props) {
           <li className="nav-item">
             <Link className="nav-link" to="/about">About</Link>
           </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Information
-            </a>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="/">Team member</a></li>
-              <li><a className="dropdown-item" href="/">Technology Learn</a></li>
-              <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="/">Something else here</a></li>
-            </ul>
-          </li>
         </ul>
         <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
           <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault" />
