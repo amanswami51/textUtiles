@@ -40,7 +40,7 @@ export default function TextForm(props) {
     const handledarkmodeClick = ()=>{
         if(myStyle.backgroundColor === '#89c5d3'){
           setMyStyle({
-            color: 'red',
+            color: 'white',
             backgroundColor: 'black'
           })
           setModeType("Enable Light Mode");

@@ -5,7 +5,9 @@ import About from './components/About.js';
 import Alert from './components/Alert';
 import React, {useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import Login from './components/login';
+import Signup from './components/signup';
+import Addnote from './components/addnote'
 function App() {
   //For dark mode
   const [mode, setMode] = useState('light');
@@ -43,6 +45,9 @@ function App() {
           <Routes>
             <Route path="/" element={<TextForm TextCaption="Enter your desire content" showAlert={showAlert} />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/addnote" element={<Addnote />} />
           </Routes>
         </div>
       </Router>
