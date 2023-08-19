@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import {signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {auth} from './firebase';
+import { useNavigate } from 'react-router-dom';
+const provider = new GoogleAuthProvider();
+
 
 
 export default function Login() {
+    const navigate = useNavigate();
     const [text, setText] = useState({email:"", password:""});
     const handleOnChange = (e)=>{
         setText({...text, [e.target.name]:e.target.value});
@@ -12,16 +16,29 @@ export default function Login() {
         e.preventDefault();
         const {email, password} = text;
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
+        .then((result) => {
+            const user = result.user;
+            // console.log(user.uid);
+            localStorage.setItem('token', user.accessToken)
+            navigate('/addnote');
         })
         .catch((error) => {
-            // const errorCode = error.code;
             const errorMessage = error.message;
             alert({errorMessage})
         });
         setText({email:"", password:""});
+    }
+    const handleSubmitWithGoogle = ()=>{
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+            // console.log(user.uid);
+            localStorage.setItem('token', user.accessToken)
+            navigate('/addnote');
+        }).catch((error) => {
+             // eslint-disable-next-line
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
     }
   return (
     <>
@@ -37,6 +54,10 @@ export default function Login() {
             </div>
             <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
         </form>
+            <h1 className='text-center'>or</h1>
+            <div className="d-grid gap-2">
+                <button type="button" onClick={handleSubmitWithGoogle} className="btn btn-primary my-3">Login with google</button>
+            </div>
     </>
   )
 }
