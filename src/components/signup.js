@@ -3,7 +3,7 @@ import {createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from './firebase';
 import { useNavigate } from 'react-router-dom';
 
-export default function Signup() {
+export default function Signup(props) {
     const navigate = useNavigate();
     const [text, setText] = useState({email:"", password:""});
     const handleOnChange = (e)=>{
@@ -19,9 +19,10 @@ export default function Signup() {
         ).then((userCredential) => {
             const user = userCredential.user;
             localStorage.setItem('token', user.accessToken)
+            localStorage.setItem('uid', user.uid)
             navigate('/addnote');
         }).catch((error) => {
-            alert(error);
+            props.showAlert("something went to be wrong", "danger")
         });
         setText({email:"", password:""})
     }

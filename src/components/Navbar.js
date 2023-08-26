@@ -4,7 +4,6 @@ import { Link} from "react-router-dom";
 import {signOut } from "firebase/auth";
 import {auth} from './firebase';
 import { useNavigate } from 'react-router-dom';
-import InformationUser from './InformationUser';
 
 export default function Navbar(props) {
   const navigate = useNavigate();
@@ -12,6 +11,7 @@ export default function Navbar(props) {
     e.preventDefault();
     signOut(auth).then(() => {
       localStorage.removeItem('token');
+      localStorage.removeItem('uid');
       navigate('/login')
       alert('Do you want to logout');
     }).catch((error) => {
@@ -47,7 +47,6 @@ export default function Navbar(props) {
           <Link to="/signup"><button type="button" className="btn btn-primary">Signup</button></Link>
         </div>:
         <div style={{display:"flex"}}>
-          <div><InformationUser/></div>
           <button type="button" className="btn btn-primary mx-3" onClick={handleLogout}>Logout</button>
         </div>}
       </div>

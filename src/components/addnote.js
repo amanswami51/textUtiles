@@ -1,67 +1,100 @@
-import React, { useEffect, useState } from 'react';
-import {dbFirestore} from './firebase';
-import { collection, addDoc, getDocs } from "firebase/firestore"; 
-import {auth} from './firebase'
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Noteitem from './Noteitem';
+import { noteContext } from '../context/notes/NoteState';
 
 
 export default function Addnote(props) {
+
+    //get text value from input tags
     const [text, setText] = useState({title:"", description:"", tag:""});
     const handleOnChange = (e)=>{
         setText({...text, [e.target.name]:e.target.value});
     }
 
-    const [notes, setNotes] = useState([]);
+    //use the NoteState variables and functions
+    const c = useContext(noteContext);
+    const {notes, addNote, getNote, updateNote} = c;
 
-//firestore db, Add note
-    const user = auth.currentUser;
-    const uid = user.uid;
+
+    //call the addNote function which is created in NoteState
     const handleAddnote = async (e)=>{
         e.preventDefault();
         const {title, description, tag} = text;
-        try {// eslint-disable-next-line
-            const docRef = await addDoc(collection(dbFirestore, `notes${uid}`), {
-                title: title,
-                description: description,
-                tag: tag
-            });
-            // console.log("Document written with ID: ", docRef.id);
-            handleGetnote();
-        } 
-        catch(e){
-            console.error("Error adding document: ", e);
-        }
+        addNote(title, description, tag);
+        getNote();
+
         setText({title:"", description:"", tag:""})
         props.showAlert('A new note add successfully', 'success')
     }
 
-//firestore db, Get note
-    const handleGetnote = async(e)=>{
-        // e.preventDefault();
-        const querySnapshot = await getDocs(collection(dbFirestore, `notes${uid}`));
-        let arr = [];
-        let i = 0;
-        querySnapshot.forEach((doc) => {
-            // console.log(doc.id)
-            // console.log(doc.data())
-            arr[i] = {
-              id:doc.id,
-              title:doc.data().title,
-              description:doc.data().description,
-              tag:doc.data().tag,
-            }
-            i++;
-          });
-          setNotes(arr) 
-    }
-
+    //call the getNote function which is created in NoteState
     useEffect(()=>{
-        handleGetnote();
+        getNote();
         // eslint-disable-next-line
     },[])
 
+    //for update the notes************************************************
+    const [etext, seteText] = useState({id: "", etitle:"", edescription:"", etag:""})
+    const ref = useRef(null);
+    const refClose = useRef(null);
+
+    //call updateNote function which is created in NoteState.
+    const updateButton = async(currentNote)=>{
+        ref.current.click();
+        seteText({id: currentNote.id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag})
+    }
+    //use to perform submit button in form to add new note
+    const handleSaveChanges = (e)=>{
+        refClose.current.click();
+        updateNote(etext.id, etext.etitle, etext.edescription, etext.etag)
+        props.showAlert("Updated successfully", "success");
+    }
+
+    //use to get value from input fields
+    const onChangeUpdate = (e)=>{
+        seteText({...etext, [e.target.name]: e.target.value})
+    }
+
   return (
     <>
+            
+            {/* Give title, description, tag, id to editNote function which is inside "NoteState.js" */}
+        <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
+
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="title">Title</label>
+                            <input type="text" value={etext.etitle} className="form-control" id="etitle" name="etitle" aria-describedby="emailHelp" onChange={onChangeUpdate} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="description">Description</label>
+                            <input type="text" value={etext.edescription} className="form-control" id="edescription" name="edescription" onChange={onChangeUpdate} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="tag">Tag</label>
+                            <input type="text" value={etext.etag} className="form-control" id="etag" name="etag" aria-describedby="emailHelp" onChange={onChangeUpdate} />
+                        </div>
+                    </form>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" disabled={etext.etitle.length<5 || etext.edescription.length<5} onClick={handleSaveChanges} className="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
         <h1>Add a note here</h1>
         <form>
             <div className="mb-3">
@@ -82,9 +115,10 @@ export default function Addnote(props) {
         <h1 className='mt-5'>Your Notes</h1>
         <div className="row">
             {notes.map((x)=>{
-                return  <Noteitem key={x.id} note={x}/>
+                return  <Noteitem key={x.id} note={x} updateButton={updateButton}/>
             })}
         </div>
+
     </>
   )
 }

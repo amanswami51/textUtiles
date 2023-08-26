@@ -8,36 +8,41 @@ export default function About() {
             <div className="accordion-item">
                 <h2 className="accordion-header">
                 <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Accordion Item #1
+                    Founder
                 </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <strong>Aman swami,</strong> web developer -- React js, firebase, express js, mongoDb. <br />
+                        I am pursuing B.Tech in computer science and engineering branch from "I.K. Gujral Punjab Technical university amritsar campus". <br /> 
+                        I completed my 12th from "Swami vivekanand Govt. model school block suratgarh, Rajasthan". <br />
                     </div>
                 </div>
             </div>
             <div className="accordion-item">
                 <h2 className="accordion-header">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Accordion Item #2
+                   My goal
                 </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <strong>I wants to become an IT experts (CTO) in big organizations.</strong> <br />
+                    Seeking a challenging career with a progresshive organization that provides an opportunity to capitalize my technical skills and abilities in the field of IT sector.
                 </div>
                 </div>
             </div>
             <div className="accordion-item">
                 <h2 className="accordion-header">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Accordion Item #3
+                    social media handler
                 </button>
                 </h2>
                 <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <strong>Instagram :-</strong> amanswami51 <br />
+                        <strong>Telegram :-</strong> @aman_8824 <br /> {/* eslint-disable-next-line */}
+                        <strong>Linkedin :-</strong> <a target='_blank' style={{color:"black", textDecoration:"none"}} href="https://www.linkedin.com/in/aman-swami-bb3a95221">click here</a>
                     </div>
                 </div>
             </div>

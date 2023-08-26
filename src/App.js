@@ -45,8 +45,8 @@ function App() {
           <Routes>
             <Route path="/" element={<TextForm TextCaption="Enter your desire content" showAlert={showAlert} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login showAlert={showAlert}/>} />
+            <Route path="/signup" element={<Signup showAlert={showAlert}/>} />
             <Route path="/addnote" element={<Addnote showAlert={showAlert}/>} />
           </Routes>
         </div>
@@ -73,24 +73,6 @@ export default App;
 
 
 
-
-
-
-
-// import logo from './logo.svg';
-// import './App.css';
-
-// let name = "Aman Swami"
-// function App() {
-//   return (
-//     <>
-//       <h1>Hello</h1>
-//       <p>This is {name}.</p>
-//     </>
-//   );
-// }
-
-// export default App;
 
 
 

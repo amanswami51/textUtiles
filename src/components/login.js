@@ -6,7 +6,7 @@ const provider = new GoogleAuthProvider();
 
 
 
-export default function Login() {
+export default function Login(props) {
     const navigate = useNavigate();
     const [text, setText] = useState({email:"", password:""});
     const handleOnChange = (e)=>{
@@ -19,12 +19,14 @@ export default function Login() {
         .then((result) => {
             const user = result.user;
             // console.log(user.uid);
-            localStorage.setItem('token', user.accessToken)
+            localStorage.setItem('token', user.accessToken);
+            localStorage.setItem('uid', user.uid)
             navigate('/addnote');
         })
         .catch((error) => {
+            // eslint-disable-next-line
             const errorMessage = error.message;
-            alert({errorMessage})
+            props.showAlert("Please login with correct crendentials", "danger")
         });
         setText({email:"", password:""});
     }
@@ -33,7 +35,8 @@ export default function Login() {
         .then((result) => {
             const user = result.user;
             // console.log(user.uid);
-            localStorage.setItem('token', user.accessToken)
+            localStorage.setItem('token', user.accessToken);
+            localStorage.setItem('uid', user.uid);
             navigate('/addnote');
         }).catch((error) => {
              // eslint-disable-next-line
