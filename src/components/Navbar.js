@@ -1,23 +1,9 @@
 import React from 'react'   //imr
 import PropTypes from 'prop-types'
 import { Link} from "react-router-dom";
-import {signOut } from "firebase/auth";
-import {auth} from './firebase';
-import { useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
-  const navigate = useNavigate();
-  const handleLogout = (e)=>{
-    e.preventDefault();
-    signOut(auth).then(() => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('uid');
-      navigate('/login')
-      alert('Do you want to logout');
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+ 
   return (
     <nav className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode}`}>
     <div className="container-fluid">
@@ -33,22 +19,11 @@ export default function Navbar(props) {
           <li className="nav-item">
             <Link className="nav-link" to="/about">About</Link>
           </li>
-          {localStorage.getItem('token')?
-          <li className="nav-item">
-            <Link className="nav-link" to="/addnote">Addnote</Link>
-          </li>:""}
         </ul>
         <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
           <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault" />
           <label className="form-check-label mx-3" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
         </div>
-        {!localStorage.getItem('token')?<div>
-          <Link to="/login"><button type="button" className="btn btn-primary mx-3">Login</button></Link>
-          <Link to="/signup"><button type="button" className="btn btn-primary">Signup</button></Link>
-        </div>:
-        <div style={{display:"flex"}}>
-          <button type="button" className="btn btn-primary mx-3" onClick={handleLogout}>Logout</button>
-        </div>}
       </div>
     </div>
   </nav>
