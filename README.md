@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# textUtiles web app is created by using `React js`, `Bootstrap`. It is helpful for manulating the text peragraph like Convert to uppercase, Lowercase, Remove extra space etc.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Steps for Running this code in your leptop
+step1 : Create project directory, then open created directory in vs code.
 
-## Available Scripts
+stpe2 : Then, Open new terminal in vs code and paste [ `git clone https://github.com/amanswami51/textUtiles.git` ].
 
-In the project directory, you can run:
+step3 : Then, run [ `npm i` ] command in vs code terminal for installing dependencies.
 
-### `npm start`
+step4 : Then run this command [ `npm start` ] in terminal for the development mode.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Then open browser and run this link `http://localhost:3000` to view it in your browser.\
+Then page looks like, 
+<img width="928" alt="Screenshot 2023-11-03 211255" src="https://github.com/amanswami51/textUtiles/assets/126395625/e08c5319-2250-4d01-81b2-07b1c47eb509">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This app contains `navbar`, `textarea`, `buttons` and `text summary`. \
+It also contains `alert bar` which is just below the navabar and this alert bar seen when buttons are press (or any task perform), you can seen this in below images.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Screenshot (468)](https://github.com/amanswami51/textUtiles/assets/126395625/13dfdf72-3b83-49d7-934f-8070aa3488fd)
+![Screenshot (469)](https://github.com/amanswami51/textUtiles/assets/126395625/c7696b84-7f95-487c-bc5b-1f52ca30a70a)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can create this type of react web app by this documentation [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+For Bootstrap, [Bootstrap](https://getbootstrap.com/).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
